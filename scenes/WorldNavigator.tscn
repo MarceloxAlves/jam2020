@@ -49,6 +49,3 @@ position = Vector2( 653, 222 )
 
 [node name="Bau12" parent="baus" instance=ExtResource( 3 )]
 position = Vector2( 373, 580 )
-
-[node name="Bau13" parent="baus" instance=ExtResource( 3 )]
-position = Vector2( 652, 542 )
