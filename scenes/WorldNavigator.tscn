@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Zombie.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Bau.tscn" type="PackedScene" id=3]
+
+[node name="WorldNavigator" type="Node2D"]
+
+[node name="Zombie" parent="." instance=ExtResource( 1 )]
+position = Vector2( 153.51, 288.865 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1008.64, 779.898 )
+
+[node name="baus" type="Node" parent="."]
+
+[node name="Bau" parent="baus" instance=ExtResource( 3 )]
+position = Vector2( 213, 447 )
+
+[node name="Bau2" parent="baus" instance=ExtResource( 3 )]
+position = Vector2( 533, 673 )
+
+[node name="Bau3" parent="baus" instance=ExtResource( 3 )]
+position = Vector2( 555, 249 )
+
+[node name="Bau4" parent="baus" instance=ExtResource( 3 )]
+position = Vector2( 284, 489 )
+
+[node name="Bau5" parent="baus" instance=ExtResource( 3 )]
+position = Vector2( 601, 390 )
+
+[node name="Bau6" parent="baus" instance=ExtResource( 3 )]
+position = Vector2( 475, 200 )
+
+[node name="Bau7" parent="baus" instance=ExtResource( 3 )]
+position = Vector2( 337.186, 342.756 )
+
+[node name="Bau8" parent="baus" instance=ExtResource( 3 )]
+position = Vector2( 482, 478 )
+
+[node name="Bau9" parent="baus" instance=ExtResource( 3 )]
+position = Vector2( 124, 548 )
+
+[node name="Bau10" parent="baus" instance=ExtResource( 3 )]
+position = Vector2( 277, 231 )
+
+[node name="Bau11" parent="baus" instance=ExtResource( 3 )]
+position = Vector2( 653, 222 )
+
+[node name="Bau12" parent="baus" instance=ExtResource( 3 )]
+position = Vector2( 373, 580 )
+
+[node name="Bau13" parent="baus" instance=ExtResource( 3 )]
+position = Vector2( 652, 542 )

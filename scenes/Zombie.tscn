@@ -1,10 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/Zombie.gd" type="Script" id=1]
-[ext_resource path="res://assets/zombie.png" type="Texture" id=2]
+[ext_resource path="res://assets/enemy/Bob/1.png" type="Texture" id=2]
+[ext_resource path="res://assets/enemy/Bob/0.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 30.0
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Zombie" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -14,12 +23,20 @@ modulate = Color( 0.0313726, 0.00392157, 0.00392157, 1 )
 position = Vector2( 0, 0.735092 )
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.878431, 0.878431, 0.878431, 1 )
-self_modulate = Color( 0.45098, 0.741176, 0.701961, 1 )
-position = Vector2( 9.77053, 3.11838 )
-texture = ExtResource( 2 )
-
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 50, 0 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 15.752, -1.38988 )
+scale = Vector2( 0.2, 0.2 )
+frames = SubResource( 2 )
+frame = 1
+speed_scale = 0.5
+playing = true
+
+[node name="SpiderSensor" type="RayCast2D" parent="."]
+rotation = -1.5708
+scale = Vector2( 10, 1 )
+enabled = true
+cast_to = Vector2( 0, 100 )
