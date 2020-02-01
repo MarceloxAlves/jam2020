@@ -6,6 +6,7 @@ var spawning_frequency = 2
 var quant_item = 0
 var hp = 0
 
+
 func _ready():
 	var timer = Timer.new()
 	timer.set_wait_time(spawning_time)
