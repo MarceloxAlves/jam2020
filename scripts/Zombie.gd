@@ -2,10 +2,13 @@ extends KinematicBody2D
 
 const MOVE_SPEED = 100
 
-var hp = 100
 var sword_damage = 10
+var hp = 100
+var rotation_speed = 90
+var velocity = Vector2()
 onready var raycast = $RayCast2D
 onready var sensorSpider =  $SpiderSensor
+onready var area = $Area2D
 
 var player = null
 
@@ -18,13 +21,24 @@ func _physics_process(delta):
 	
 	var vec_to_player = player.global_position - global_position
 	vec_to_player = vec_to_player.normalized()
-	#global_rotation = atan2(vec_to_player.y, vec_to_player.x)
-	move_and_collide(vec_to_player * MOVE_SPEED * delta)
 	
-	if sensorSpider.is_colliding():
+	if (sensorSpider.is_colliding()):
 		var coll = sensorSpider.get_collider()
-		if coll.name != "Player":
+		if (coll.name != "Player" or area.get_overlapping_bodies() != []):
 			print("bateu")
+			velocity = Vector2(MOVE_SPEED, MOVE_SPEED/3).rotated(rotation_speed)
+			var move = move_and_slide(velocity)
+		else:
+			global_rotation = atan2(vec_to_player.y, vec_to_player.x)
+			move_and_collide(vec_to_player * MOVE_SPEED * delta)
+	else:
+		print("ta suave")
+		global_rotation = atan2(vec_to_player.y, vec_to_player.x)
+		move_and_collide(vec_to_player * MOVE_SPEED * delta)
+		
+		
+	
+	
 	
 	if raycast.is_colliding():
 		var coll = raycast.get_collider()
