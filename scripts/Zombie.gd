@@ -8,7 +8,7 @@ var rotation_speed = 90
 var velocity = Vector2()
 onready var raycast = $RayCast2D
 onready var sensorSpider =  $SpiderSensor
-onready var area = $Area2D
+onready var area = $ZombieArea2D
 
 var player = null
 var path = []
