@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const MOVE_SPEED = 300
 
-onready var raycast = $RayCast2D
+var machete = null
 
 func _ready():
 	yield(get_tree(), "idle_frame")
@@ -24,10 +24,10 @@ func _physics_process(delta):
 	var look_vec = get_global_mouse_position() - global_position
 	global_rotation = atan2(look_vec.y, look_vec.x)
 	
-	if Input.is_action_just_pressed("shoot"):
-		var coll = raycast.get_collider()
-		if raycast.is_colliding() and coll.has_method("kill"):
-			coll.kill()
 
 func kill():
 	get_tree().reload_current_scene()
+	
+
+func equip(m):
+	machete = m
