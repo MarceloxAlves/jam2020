@@ -1,11 +1,11 @@
 extends KinematicBody2D
 
 const MOVE_SPEED = 300
-
-var machete = null
+var quant_item = 0
+var machete
+onready var world = get_tree().get_root().get_node("World")
 
 func _ready():
-	yield(get_tree(), "idle_frame")
 	get_tree().call_group("zombies", "set_player", self)
 
 func _physics_process(delta):
@@ -27,7 +27,10 @@ func _physics_process(delta):
 
 func kill():
 	get_tree().reload_current_scene()
-	
 
-func equip(m):
-	machete = m
+func pick_up_item():
+	quant_item += 1
+	world.remove_item()
+
+func equip():
+	pass
