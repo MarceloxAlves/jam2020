@@ -8,6 +8,11 @@
 [node name="World" type="Node2D"]
 script = ExtResource( 4 )
 
+[node name="Node2D" parent="." instance=ExtResource( 2 )]
+margin_left = 2.78952
+margin_right = 402.79
+margin_bottom = 97.0
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 527.424, 335.734 )
 
