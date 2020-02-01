@@ -26,15 +26,13 @@ func _physics_process(delta):
 	
 	if (sensorSpider.is_colliding()):
 		var coll = sensorSpider.get_collider()
-		if (coll.name != "Player" or area.get_overlapping_bodies() != []):
-			print("bateu")
+		if (coll.name != "Player" and area.get_overlapping_bodies() != []):
 			velocity = Vector2(MOVE_SPEED, MOVE_SPEED/3).rotated(rotation_speed)
 			var move = move_and_slide(velocity)
 		else:
 			global_rotation = atan2(vec_to_player.y, vec_to_player.x)
 			move_and_collide(vec_to_player * MOVE_SPEED * delta)
 	else:
-		print("ta suave")
 		global_rotation = atan2(vec_to_player.y, vec_to_player.x)
 		move_and_collide(vec_to_player * MOVE_SPEED * delta)
 		
