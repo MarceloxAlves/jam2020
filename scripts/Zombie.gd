@@ -11,11 +11,13 @@ onready var sensorSpider =  $SpiderSensor
 onready var area = $Area2D
 
 var player = null
+var path = []
 
 func _ready():
 	add_to_group("enemies")
 
 func _physics_process(delta):
+	
 	if player == null:
 		return
 	
@@ -44,6 +46,7 @@ func _physics_process(delta):
 		var coll = raycast.get_collider()
 		if coll.name == "Player":
 			coll.kill()
+						
 
 func kill():
 	queue_free()
