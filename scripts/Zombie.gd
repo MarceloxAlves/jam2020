@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 const MOVE_SPEED = 100
 
+var hp = 100
+var sword_damage = 10
 onready var raycast = $RayCast2D
 onready var sensorSpider =  $SpiderSensor
 
@@ -22,8 +24,7 @@ func _physics_process(delta):
 	if sensorSpider.is_colliding():
 		var coll = sensorSpider.get_collider()
 		if coll.name != "Player":
-				print("bateu")
-	
+			print("bateu")
 	
 	if raycast.is_colliding():
 		var coll = raycast.get_collider()
@@ -33,5 +34,21 @@ func _physics_process(delta):
 func kill():
 	queue_free()
 
+func is_dead():
+	return hp == 0
+	
+func take_damage(damage):
+	if (hp - damage <= 0):
+		hp = 0
+		yield()
+		kill()
+		return
+
+	hp -= damage
+	yield()
+	return
+	
 func set_player(p):
 	player = p
+
+#func is_dead = hp

@@ -1,6 +1,5 @@
 extends Node2D
 
-var sword_life = 100
 var quant_max_spawn = 3
 var spawning_time = 3
 var spawning_frequency = 2
