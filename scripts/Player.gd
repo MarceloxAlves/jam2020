@@ -7,7 +7,7 @@ onready var sword_area = $SwordArea
 onready var world = get_tree().get_root().get_node("World")
 
 func _ready():
-	get_tree().call_group("zombies", "set_player", self)
+	get_tree().call_group("enemies", "set_player", self)
 	sword_area.connect("body_enter", self, "hit_enemy")
 
 func _physics_process(delta):
