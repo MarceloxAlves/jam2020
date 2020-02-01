@@ -18,12 +18,15 @@ z_as_relative = false
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 17.5658, 0.35849 )
+position = Vector2( 16.6158, 0.35849 )
 z_as_relative = false
 texture = ExtResource( 2 )
 
 [node name="SwordArea" type="Area2D" parent="."]
 
 [node name="SwordCollision" type="CollisionShape2D" parent="SwordArea"]
-position = Vector2( 60.9605, 0 )
+position = Vector2( 91.9605, 0 )
 shape = SubResource( 2 )
+[connection signal="area_entered" from="SwordArea" to="." method="_on_SwordArea_area_entered"]
+[connection signal="body_entered" from="SwordArea" to="." method="_on_SwordArea_body_entered"]
+[connection signal="body_shape_entered" from="SwordArea" to="." method="_on_SwordArea_body_shape_entered"]

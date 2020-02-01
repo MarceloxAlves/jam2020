@@ -8,7 +8,6 @@ onready var world = get_tree().get_root().get_node("World")
 
 func _ready():
 	get_tree().call_group("zombies", "set_player", self)
-	sword_area.connect("body_enter", self, "hit_enemy")
 
 func _physics_process(delta):
 	var move_vec = Vector2()
@@ -25,13 +24,7 @@ func _physics_process(delta):
 	
 	var look_vec = get_global_mouse_position() - global_position
 	global_rotation = atan2(look_vec.y, look_vec.x)
-	
-	
-func hit_enemy(body):
-	print(body.name)
-	if Input.is_action_just_pressed("shoot"):
-		print("atirou")
-	
+
 func kill():
 	get_tree().reload_current_scene()
 
@@ -41,3 +34,23 @@ func pick_up_item():
 
 func equip():
 	pass
+
+func _on_SwordArea_body_entered(body):
+	print(body.name)
+	if Input.is_action_pressed("shoot"):
+		print("atirou")
+	
+func _process(delta):
+	pass
+
+func _on_SwordArea_area_entered(area):
+	print(area.name)
+	
+
+
+
+
+func _on_SwordArea_body_shape_entered(body_id, body, body_shape, area_shape):
+	print("aqui")
+	if Input.is_action_pressed("shoot"):
+		print("atirou")
