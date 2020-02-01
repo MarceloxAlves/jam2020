@@ -3,7 +3,7 @@ extends KinematicBody2D
 const MOVE_SPEED = 300
 var quant_item = 0
 var attack = 10
-var sword_life = 100
+var sword_life = 50
 var machete
 onready var sword_area = $SwordArea
 onready var world = get_tree().get_root().get_node("World")

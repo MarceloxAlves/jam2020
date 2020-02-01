@@ -40,10 +40,9 @@ margin_bottom = 97.0
 [node name="PlayerSword" type="TextureProgress" parent="HBoxContainer/VBoxContainer/HP2"]
 margin_right = 396.0
 margin_bottom = 40.0
-value = 50.0
+rounded = true
 texture_under = ExtResource( 5 )
-texture_over = ExtResource( 3 )
-tint_progress = Color( 0.301961, 0.0784314, 0.0784314, 1 )
+texture_progress = ExtResource( 3 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
 margin_left = 400.0
