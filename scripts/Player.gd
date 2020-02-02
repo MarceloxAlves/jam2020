@@ -59,6 +59,7 @@ func _physics_process(delta):
 		var body = sword_area.get_overlapping_bodies()[1]
 		
 		if (body.name == "Bigorna2D"):
+			$bigorna.play()
 			sword_repair(body)
 		
 		if (body.name == "Zombie"):
