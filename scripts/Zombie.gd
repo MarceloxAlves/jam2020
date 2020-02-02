@@ -3,7 +3,7 @@ extends KinematicBody2D
 var MOVE_SPEED = 100
 
 var sword_damage = 5
-var damage = 10
+var attack = 10
 var hp = 100
 var rotation_speed = 90
 var velocity = Vector2()
@@ -37,11 +37,6 @@ func _physics_process(delta):
 		global_rotation = atan2(vec_to_player.y, vec_to_player.x)
 		var _move = move_and_collide(vec_to_player * MOVE_SPEED * delta)
 		
-	
-	
-		
-
-
 func kill():
 	self.get_parent().enemy_remaing -= 1
 	queue_free()
@@ -78,11 +73,11 @@ func _on_ZombieArea2D_body_entered(body):
 		else:
 			body.x_destiny = -50
 			
-		body.take_hit = true
-		body.take_hit(damage, player.global_position - global_position)
+		body.hitado = true
+		body.take_hit(attack, player.global_position - global_position)
 		
 
 
 func _on_ZombieArea2D_body_exited(body):
 	if body.name == "Player":
-		body.take_hit = false
+		body.hitado = false

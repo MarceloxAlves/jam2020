@@ -6,7 +6,7 @@ var attack = 10
 var sword_life = 100
 var break_coefficient = 0.3
 var hp = 100
-var take_hit = false
+var hitado = false
 var velocity_hit = 0
 
 var x_destiny = 50
@@ -63,13 +63,13 @@ func _physics_process(delta):
 	#if (collision):
 		#print("colidiu")
 			
-	if (take_hit):
+	if (hitado):
 		print(hp)
 		self.position.x += x_destiny
 		
 	
-func attack_enemy(body, attack):
-	var f = body.take_damage(attack)
+func attack_enemy(body, damage):
+	var f = body.take_damage(damage)
 	sword_life -= body.sword_damage
 	
 	if (body.is_dead()):
@@ -83,7 +83,7 @@ func sword_repair(_body):
 		sword_life += 10
 		
 func take_hit(damage, velocity):
-	take_hit = true
+	hitado = true
 	velocity_hit = velocity
 	if (hp - damage <= 0):
 		hp = 0
