@@ -2,9 +2,11 @@ extends KinematicBody2D
 
 var MOVE_SPEED = 200
 
+var hitado = false
 var sword_damage = 5
 var attack = 10
 var hp = 100
+var velocity_anti_player
 var rotation_speed = 90
 var velocity = Vector2()
 onready var raycast = $RayCast2D
@@ -40,6 +42,9 @@ func _physics_process(delta):
 	var vec_to_player = player.global_position - global_position
 	vec_to_player = vec_to_player.normalized()
 	
+	if (hitado):
+		move_and_collide(velocity_anti_player * delta)
+	
 	if (sensorSpider.is_colliding()):
 		var coll = sensorSpider.get_collider()
 		if (coll.name != "Player" and area.get_overlapping_bodies() != []):
@@ -52,6 +57,8 @@ func _physics_process(delta):
 		if(can_walk):
 			global_rotation = atan2(vec_to_player.y, vec_to_player.x)
 			var _move = move_and_collide(vec_to_player * MOVE_SPEED * delta)
+			
+	
 		
 func kill():
 	self.get_parent().enemy_remaing -= 1
@@ -63,6 +70,10 @@ func finish_time():
 func is_dead():
 	return hp == 0
 	
+	
+func change_hit():
+	hitado = false
+	
 func take_damage(damage):
 	$attack.play()
 	if (hp - damage <= 0):
@@ -70,8 +81,15 @@ func take_damage(damage):
 		yield()
 		kill()
 		return
-	self.position.x += x_derection
-
+	
+	
+	velocity_anti_player = -(player.global_position - global_position)
+	hitado = true
+	var timer = Timer.new()
+	timer.set_wait_time(1)
+	timer.connect("timeout", self, "change_hit")
+	add_child(timer)
+	timer.start()
 	hp -= damage
 	var damage_counter_instance = damage_counter.instance()
 	damage_counter_instance.damage = damage

@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+const ENEMY_IMPULSE = 40
 var MOVE_SPEED = 600
 var quant_item = 0
 var attack = 10
@@ -62,19 +63,17 @@ func _physics_process(delta):
 			$bigorna.play()
 			sword_repair(body)
 		
-		if (body.name == "Zombie"):
-			if(self.position.x < body.position.x):
-				body.x_derection = 50
-			else:
-				body.x_derection = -50
-
-	#if (collision):
-		#print("colidiu")
+		#if (body.name == "Zombie"):
+		#	if(self.position.x < body.position.x):
+		#		body.x_direction = 1
+		#	else:
+		#		body.x_direction = -1
 			
 	if (hitado):
-		print(hp)
-		self.position.x += x_destiny
-		
+		move_and_collide(velocity_hit * ENEMY_IMPULSE * delta)
+	
+func finish_time():
+	hitado = false
 	
 func attack_enemy(body, damage):
 	$attack.play()
@@ -95,13 +94,23 @@ func sword_repair(_body):
 		
 func take_hit(damage, velocity):
 	hitado = true
+		
+	var timer = Timer.new()
+	timer.set_wait_time(3)
+	timer.connect("timeout", self, "finish_time")
+	add_child(timer)
+	timer.start()
+		
+	var hitI = hit.instance()
+	hitI.position = Vector2(self.position.x, self.position.y - 50)	
+	hitI.damage = damage
+	add_child(hitI)
+	hitI.animate()
 	velocity_hit = velocity
 	if (hp - damage <= 0):
 		hp = 0
 		kill()
-
 	hp -= damage
-
 
 func is_dead():
 	return hp == 0
