@@ -33,6 +33,7 @@ cast_to = Vector2( 50, 0 )
 position = Vector2( 15.752, -1.38988 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 2 )
+frame = 1
 speed_scale = 0.5
 playing = true
 
