@@ -16,7 +16,7 @@ func _process(delta):
 
 	
 	if (round($Timer.time_left) == 10):
-		$HBoxContainer/time.add_color_override("font_color", Color(1,0,0,1))
+		$HBoxContainer/time.add_color_override("font_color", Color(1,0.8,0.8,1))
 	
 
 func _on_Timer_ready():
