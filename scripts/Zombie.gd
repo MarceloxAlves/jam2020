@@ -14,8 +14,20 @@ onready var area = $ZombieArea2D
 var player = null
 var path = []
 
+var rand = RandomNumberGenerator.new()
+var can_walk = true
+	
+
 func _ready():
 	add_to_group("enemies")
+	rand.randomize()
+	
+	var timer = Timer.new()
+	timer.set_wait_time(rand.randi_range(0, 4))
+	timer.connect("timeout", self, "finish_time")
+	add_child(timer)
+	timer.start()
+	
 
 func _physics_process(delta):
 	
@@ -34,14 +46,17 @@ func _physics_process(delta):
 			global_rotation = atan2(vec_to_player.y, vec_to_player.x)
 			var _move = move_and_collide(vec_to_player * MOVE_SPEED * delta)
 	else:
-	
-		global_rotation = atan2(vec_to_player.y, vec_to_player.x)
-		var _move = move_and_collide(vec_to_player * MOVE_SPEED * delta)
+		if(can_walk):
+			global_rotation = atan2(vec_to_player.y, vec_to_player.x)
+			var _move = move_and_collide(vec_to_player * MOVE_SPEED * delta)
 		
 func kill():
 	self.get_parent().enemy_remaing -= 1
 	queue_free()
 
+func finish_time():
+	can_walk = !can_walk
+	
 func is_dead():
 	return hp == 0
 	
