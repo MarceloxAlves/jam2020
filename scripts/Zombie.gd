@@ -64,6 +64,7 @@ func is_dead():
 	return hp == 0
 	
 func take_damage(damage):
+	$attack.play()
 	if (hp - damage <= 0):
 		hp = 0
 		yield()
