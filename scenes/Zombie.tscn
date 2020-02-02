@@ -48,7 +48,6 @@ rotation = 1.5708
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 2 )
 animation = "walking"
-frame = 1
 speed_scale = 0.5
 playing = true
 
@@ -63,3 +62,5 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZombieArea2D"]
 shape = SubResource( 3 )
+[connection signal="body_entered" from="ZombieArea2D" to="." method="_on_ZombieArea2D_body_entered"]
+[connection signal="body_exited" from="ZombieArea2D" to="." method="_on_ZombieArea2D_body_exited"]
