@@ -103,6 +103,7 @@ func kill():
 
 func pick_up_item():
 	quant_item += 1
+	$collect.play()
 	world.remove_item()
 
 func equip():
