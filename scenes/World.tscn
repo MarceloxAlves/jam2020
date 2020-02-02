@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Facao.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/World.gd" type="Script" id=4]
-[ext_resource path="res://scenes/Bigorna.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2171.68, 10 )
@@ -18,13 +17,10 @@ position = Vector2( 489.581, 697.341 )
 [node name="Facao" parent="." instance=ExtResource( 3 )]
 position = Vector2( 886.221, 840.713 )
 
-[node name="Node2D" parent="." instance=ExtResource( 2 )]
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 227.056, 298.536 )
 shape = SubResource( 1 )
 
-[node name="Bigorna" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1560.87, 596.655 )
+[node name="HUD" parent="." instance=ExtResource( 2 )]

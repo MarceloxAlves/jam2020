@@ -12,7 +12,8 @@ func _process(delta):
 
 	$HBoxContainer/VBoxContainer/HP2/PlayerSword.value =player.sword_life
 	$HBoxContainer/time.text =  str(round($Timer.time_left))
-	$HBoxContainer/MarginContainer/HBoxContainer/metal.text =  str(round(player.quant_item))
+	$HBoxContainer/HBoxContainer/metal.text =  str(round(player.quant_item))
+
 	
 	if (round($Timer.time_left) == 10):
 		$HBoxContainer/time.add_color_override("font_color", Color(1,0,0,1))
