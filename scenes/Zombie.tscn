@@ -1,16 +1,29 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/Zombie.gd" type="Script" id=1]
-[ext_resource path="res://assets/enemy/Bob/1.png" type="Texture" id=2]
+[ext_resource path="res://assets/Oponente/idle.png" type="Texture" id=2]
+[ext_resource path="res://assets/Oponente/atk.png" type="Texture" id=3]
+[ext_resource path="res://assets/Oponente/walk1.png" type="Texture" id=4]
+[ext_resource path="res://assets/Oponente/death.png" type="Texture" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 30.0
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ null, ExtResource( 2 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 4 ) ],
 "loop": true,
-"name": "default",
+"name": "walking",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "death",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "attack",
 "speed": 5.0
 } ]
 
@@ -30,10 +43,11 @@ enabled = true
 cast_to = Vector2( 50, 0 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 15.752, -1.38988 )
+position = Vector2( 14.9375, -6.27695 )
+rotation = 1.5708
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 2 )
-frame = 1
+animation = "walking"
 speed_scale = 0.5
 playing = true
 
