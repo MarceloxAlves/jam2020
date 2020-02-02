@@ -19,20 +19,34 @@ func _ready():
 	get_tree().call_group("enemies", "set_player", self)
 
 func _physics_process(delta):
+	var press = false
 	var move_vec = Vector2()
 	if Input.is_action_pressed("move_up"):
+		$AnimatedSprite.play('walking')
+		press = true
 		move_vec.y -= 1
 	if Input.is_action_pressed("move_down"):
+		$AnimatedSprite.play('walking')
+		press = true
 		move_vec.y += 1
 	if Input.is_action_pressed("move_left"):
+		$AnimatedSprite.play('walking')
+		press = true
 		move_vec.x -= 1
 	if Input.is_action_pressed("move_right"):
+		$AnimatedSprite.play('walking')
+		press = true
 		move_vec.x += 1
+	
+	if not press:
+		$AnimatedSprite.play('idle')
+	
 	move_vec = move_vec.normalized()
-	move_and_collide(move_vec * MOVE_SPEED * delta)
+	var _move = move_and_collide(move_vec * MOVE_SPEED * delta)
 	
 	var look_vec = get_global_mouse_position() - global_position
 	global_rotation = atan2(look_vec.y, look_vec.x)
+
 	
 	
 	if Input.is_action_just_pressed("shoot") and sword_area.get_overlapping_areas() != []:	
@@ -63,8 +77,8 @@ func attack_enemy(body, attack):
 		
 	f.resume()
 	
-func sword_repair(body):
-	if (quant_item > 0):
+func sword_repair(_body):
+	if (quant_item > 0 and sword_life != 100):
 		quant_item -= 1
 		sword_life += 10
 		
@@ -82,7 +96,7 @@ func is_dead():
 	return hp == 0
 
 func kill():
-	get_tree().reload_current_scene()
+	var _reload = get_tree().reload_current_scene()
 
 func pick_up_item():
 	quant_item += 1

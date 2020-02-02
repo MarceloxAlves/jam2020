@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/GUI/lifebar_bg.png" type="Texture" id=1]
 [ext_resource path="res://assets/GUI/lifebar_fill.png" type="Texture" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://assets/GUI/sword_fill_damaged.png" type="Texture" id=5]
 [ext_resource path="res://fonts/gomarice_no_continue.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://assets/aco_icon.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.584314, 0.419608, 0.215686, 0.282353 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -20,39 +23,48 @@ font_data = ExtResource( 6 )
 size = 60
 font_data = ExtResource( 6 )
 
-[node name="Node2D" type="MarginContainer"]
+[node name="HUD" type="MarginContainer"]
+margin_right = 1928.0
+margin_bottom = 151.0
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 1681.0
+[node name="PC" type="PanelContainer" parent="."]
+margin_right = 1928.0
+margin_bottom = 151.0
+custom_styles/panel = SubResource( 4 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PC"]
+margin_right = 1928.0
 margin_bottom = 151.0
 grow_horizontal = 0
-size_flags_horizontal = 2
 size_flags_vertical = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 440.0
+[node name="VBoxContainer" type="VBoxContainer" parent="PC/HBoxContainer"]
+margin_right = 640.0
 margin_bottom = 151.0
+rect_min_size = Vector2( 640, 0 )
+alignment = 1
 
-[node name="HP" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
-margin_right = 440.0
+[node name="HP" type="MarginContainer" parent="PC/HBoxContainer/VBoxContainer"]
+margin_top = 13.0
+margin_right = 640.0
+margin_bottom = 66.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PC/HBoxContainer/VBoxContainer/HP"]
+margin_right = 640.0
 margin_bottom = 53.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HP"]
-margin_right = 440.0
-margin_bottom = 53.0
-
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HP/HBoxContainer"]
+[node name="Label" type="Label" parent="PC/HBoxContainer/VBoxContainer/HP/HBoxContainer"]
 margin_top = 6.0
 margin_right = 40.0
 margin_bottom = 47.0
 custom_fonts/font = SubResource( 1 )
 text = "HP"
 
-[node name="TextureProgress" type="TextureProgress" parent="HBoxContainer/VBoxContainer/HP/HBoxContainer"]
+[node name="TextureProgress" type="TextureProgress" parent="PC/HBoxContainer/VBoxContainer/HP/HBoxContainer"]
 margin_left = 44.0
 margin_right = 440.0
 margin_bottom = 53.0
@@ -61,70 +73,54 @@ texture_under = ExtResource( 1 )
 texture_over = ExtResource( 2 )
 tint_progress = Color( 0.301961, 0.0784314, 0.0784314, 1 )
 
-[node name="HP2" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 57.0
-margin_right = 440.0
-margin_bottom = 125.0
+[node name="HP2" type="MarginContainer" parent="PC/HBoxContainer/VBoxContainer"]
+margin_top = 70.0
+margin_right = 640.0
+margin_bottom = 138.0
 
-[node name="PlayerSword" type="TextureProgress" parent="HBoxContainer/VBoxContainer/HP2"]
-margin_right = 440.0
+[node name="PlayerSword" type="TextureProgress" parent="PC/HBoxContainer/VBoxContainer/HP2"]
+margin_right = 640.0
 margin_bottom = 68.0
 step = 0.01
 rounded = true
 texture_under = ExtResource( 5 )
 texture_progress = ExtResource( 3 )
 
-[node name="separator" type="Label" parent="HBoxContainer"]
-margin_left = 444.0
-margin_right = 807.0
+[node name="time" type="Label" parent="PC/HBoxContainer"]
+margin_left = 644.0
+margin_right = 1144.0
 margin_bottom = 151.0
-custom_fonts/font = SubResource( 2 )
-text = "           "
-align = 1
-valign = 1
-
-[node name="time" type="Label" parent="HBoxContainer"]
-margin_left = 811.0
-margin_right = 1157.0
-margin_bottom = 151.0
+grow_vertical = 0
+rect_min_size = Vector2( 500, 0 )
 custom_fonts/font = SubResource( 2 )
 text = "00:00"
-align = 1
+align = 2
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="separator2" type="Label" parent="HBoxContainer"]
-margin_left = 1161.0
-margin_right = 1524.0
+[node name="HBoxContainer" type="HBoxContainer" parent="PC/HBoxContainer"]
+margin_left = 1148.0
+margin_right = 1903.0
 margin_bottom = 151.0
-custom_fonts/font = SubResource( 2 )
-text = "           "
-align = 1
-valign = 1
+rect_min_size = Vector2( 755, 0 )
+alignment = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
-margin_left = 1528.0
-margin_right = 1681.0
-margin_bottom = 151.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer"]
-margin_right = 153.0
-margin_bottom = 151.0
-
-[node name="metal" type="Label" parent="HBoxContainer/MarginContainer/HBoxContainer"]
+[node name="metal" type="Label" parent="PC/HBoxContainer/HBoxContainer"]
+margin_left = 602.0
 margin_top = 45.0
-margin_right = 53.0
+margin_right = 655.0
 margin_bottom = 106.0
 custom_fonts/font = SubResource( 3 )
 text = "10"
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer/HBoxContainer"]
-margin_left = 57.0
-margin_right = 153.0
+[node name="texMetal" type="TextureRect" parent="PC/HBoxContainer/HBoxContainer"]
+margin_left = 659.0
+margin_right = 755.0
 margin_bottom = 151.0
 texture = ExtResource( 7 )
+stretch_mode = 4
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 30.0
