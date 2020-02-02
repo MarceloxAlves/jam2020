@@ -101,11 +101,6 @@ func take_hit(damage, velocity):
 	add_child(timer)
 	timer.start()
 		
-	var hitI = hit.instance()
-	hitI.position = Vector2(self.position.x, self.position.y - 50)	
-	hitI.damage = damage
-	add_child(hitI)
-	hitI.animate()
 	velocity_hit = velocity
 	if (hp - damage <= 0):
 		hp = 0
