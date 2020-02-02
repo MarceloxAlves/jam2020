@@ -9,6 +9,7 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "damage"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Damage:rect_position")
 tracks/0/interp = 1
@@ -16,10 +17,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -60, -90 ), Vector2( -60, -120 ), Vector2( -60, -100 ), Vector2( -60, -110 ) ]
+"values": [ Vector2( -60, -90 ), Vector2( -60, -120 ), Vector2( -60, -100 ), Vector2( -60, -110 ), Vector2( -58.3298, -293.72 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Damage:custom_colors/font_color")
@@ -28,22 +29,22 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.7, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0.364706, 0.14902, 0.14902, 1 ), Color( 0.364706, 0.14902, 0.14902, 1 ), Color( 0.364706, 0.14902, 0.14902, 0 ) ]
+"values": [ Color( 0.364706, 0.14902, 0.14902, 1 ), Color( 0.733333, 0.109804, 0.109804, 1 ), Color( 0.364706, 0.14902, 0.14902, 0 ) ]
 }
 
 [node name="DamageCounter" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Damage" type="Label" parent="."]
-margin_left = -60.0
-margin_top = -110.0
-margin_right = 60.0
-margin_bottom = -29.0
+margin_left = -58.3298
+margin_top = -293.72
+margin_right = 61.6702
+margin_bottom = -212.72
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.364706, 0.14902, 0.14902, 1 )
+custom_colors/font_color = Color( 0.364706, 0.14902, 0.14902, 0 )
 text = "1"
 align = 1
 __meta__ = {

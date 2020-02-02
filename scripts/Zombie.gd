@@ -74,7 +74,8 @@ func take_damage(damage):
 	hp -= damage
 	var damage_counter_instance = damage_counter.instance()
 	damage_counter_instance.damage = damage
-	add_child(damage_counter_instance)
+	damage_counter_instance.position = Vector2(self.position.x, self.position.y - 30)
+	get_tree().get_root().add_child(damage_counter_instance)
 	yield()
 	return
 	

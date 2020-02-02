@@ -12,14 +12,14 @@ radius = 30.0
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "attack",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 2 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "walking",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "attack",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
@@ -49,7 +49,6 @@ rotation = 1.5708
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 2 )
 animation = "walking"
-frame = 1
 speed_scale = 0.5
 playing = true
 
