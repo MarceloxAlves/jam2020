@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const MOVE_SPEED = 300
+var MOVE_SPEED = 600
 var quant_item = 0
 var attack = 10
 var sword_life = 100
@@ -59,6 +59,12 @@ func _physics_process(delta):
 		
 		if (body.name == "Bigorna2D"):
 			sword_repair(body)
+		
+		if (body.name == "Zombie"):
+			if(self.position.x < body.position.x):
+				body.x_derection = 50
+			else:
+				body.x_derection = -50
 
 	#if (collision):
 		#print("colidiu")
@@ -72,6 +78,7 @@ func attack_enemy(body, damage):
 	if (sword_life > 0):
 		var f = body.take_damage(damage)
 		sword_life -= body.sword_damage
+		
 		
 		if (body.is_dead()):
 			print("Matou o inimigo")
@@ -105,3 +112,10 @@ func pick_up_item():
 
 func equip():
 	pass
+
+func horda_up():
+	if (hp + 25 <= 100):
+		hp += 25
+	else:
+		hp = 100
+	MOVE_SPEED += 25 

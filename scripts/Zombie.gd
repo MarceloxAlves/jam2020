@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var MOVE_SPEED = 100
+var MOVE_SPEED = 200
 
 var sword_damage = 5
 var attack = 10
@@ -10,6 +10,8 @@ var velocity = Vector2()
 onready var raycast = $RayCast2D
 onready var sensorSpider =  $SpiderSensor
 onready var area = $ZombieArea2D
+
+var x_derection = 50
 
 var player = null
 var path = []
@@ -23,7 +25,7 @@ func _ready():
 	rand.randomize()
 	
 	var timer = Timer.new()
-	timer.set_wait_time(rand.randi_range(0, 4))
+	timer.set_wait_time(rand.randi_range(1, 4))
 	timer.connect("timeout", self, "finish_time")
 	add_child(timer)
 	timer.start()
@@ -66,6 +68,7 @@ func take_damage(damage):
 		yield()
 		kill()
 		return
+	self.position.x += x_derection
 
 	hp -= damage
 	yield()
@@ -80,11 +83,6 @@ func hordaUp():
 
 func _on_ZombieArea2D_body_entered(body):
 	if body.name == "Player":
-		if(self.position.x < body.position.x):
-			body.x_destiny = 50
-		else:
-			body.x_destiny = -50
-			
 		body.hitado = true
 		body.take_hit(attack, player.global_position - global_position)
 		
