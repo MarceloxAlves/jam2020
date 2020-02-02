@@ -9,5 +9,10 @@ var scene = preload("res://scenes/World.tscn")
 func _ready():
 	pass 
 
-func _on_Button_pressed():
+
+func _on_TextureButton_pressed():
+	$Timer.start()
+
+
+func _on_Timer_timeout():
 	var _change = get_tree().change_scene_to(scene)
