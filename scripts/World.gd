@@ -32,8 +32,6 @@ func _ready():
 	timer_enemy.connect("timeout", self, "repeate_me_enemy")
 	add_child(timer_enemy)
 	timer_enemy.start()
-	
-	
 
 func create_timer_enemy():
 	var timer_enemy = Timer.new()
@@ -51,20 +49,17 @@ func create_timer():
 	add_child(timer)
 	timer.start()
 	
-	
 func horda_add():
 	horda += 1
 	quant_max_spawn_enemy += quant_enemy
 	get_tree().call_group("enemies", "hordaUp")
 	
-
 func repeate_me_enemy():
 	
 	if (quant_enemy < quant_max_spawn_enemy - spawning_frequency_enemy):
 		spawn_enemy()
 	elif(enemy_remaing == 0):
 		horda_add()
-		
 		
 	create_timer_enemy()
 	

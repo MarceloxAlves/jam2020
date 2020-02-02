@@ -34,6 +34,12 @@ func _physics_process(delta):
 		var body = sword_area.get_overlapping_areas()[0]
 		if (body.name == "ZombieArea2D"):
 			attack_enemy(body.get_parent(), attack)
+	
+	if Input.is_action_just_pressed("shoot") and len(sword_area.get_overlapping_bodies()) > 1:
+		var body = sword_area.get_overlapping_bodies()[1]
+		
+		if (body.name == "Bigorna2D"):
+			sword_repair(body)
 
 func attack_enemy(body, attack):
 	var f = body.take_damage(attack)
@@ -43,6 +49,11 @@ func attack_enemy(body, attack):
 		print("Matou o inimigo")
 		
 	f.resume()
+	
+func sword_repair(body):
+	if (quant_item > 0):
+		quant_item -= 1
+		sword_life += 10
 
 func kill():
 	get_tree().reload_current_scene()

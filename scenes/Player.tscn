@@ -40,5 +40,4 @@ rotation = 1.5708
 scale = Vector2( 0.3, 0.319488 )
 frames = SubResource( 3 )
 animation = "attack"
-frame = 3
 playing = true
