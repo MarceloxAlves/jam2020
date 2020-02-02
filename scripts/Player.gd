@@ -14,7 +14,6 @@ var x_destiny = 50
 var machete
 onready var sword_area = $SwordArea
 onready var world = get_tree().get_root().get_node("World")
-var hit = load("res://scenes/Hit.tscn")
 
 func _ready():
 	get_tree().call_group("enemies", "set_player", self)
@@ -47,8 +46,9 @@ func _physics_process(delta):
 	
 	var look_vec = get_global_mouse_position() - global_position
 	global_rotation = atan2(look_vec.y, look_vec.x)
-
 	
+	if Input.is_action_just_pressed("shoot"):
+		$AnimatedSprite.play('attack')
 	
 	if Input.is_action_just_pressed("shoot") and sword_area.get_overlapping_areas() != []:	
 		var body = sword_area.get_overlapping_areas()[0]
@@ -94,11 +94,6 @@ func sword_repair(_body):
 		
 func take_hit(damage, velocity):
 	hitado = true
-	var hitI = hit.instance()
-	hitI.position = Vector2(self.position.x, self.position.y - 50)	
-	hitI.damage = damage
-	add_child(hitI)
-	hitI.animate()
 	velocity_hit = velocity
 	if (hp - damage <= 0):
 		hp = 0
@@ -111,7 +106,9 @@ func is_dead():
 	return hp == 0
 
 func kill():
-	var _reload = get_tree().reload_current_scene()
+	var scene = load("res://scenes/GameOver.tscn")
+	var _reload = get_tree().change_scene_to(scene)
+	
 
 func pick_up_item():
 	quant_item += 1

@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/player/idle.png" type="Texture" id=2]
 [ext_resource path="res://assets/player/walk1.png" type="Texture" id=3]
 [ext_resource path="res://sounds/attack.wav" type="AudioStream" id=4]
 [ext_resource path="res://sounds/item.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/player/atk1.png" type="Texture" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 35.1943
@@ -19,14 +20,19 @@ animations = [ {
 "name": "idle",
 "speed": 8.0
 }, {
+"frames": [  ],
+"loop": true,
+"name": "death",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "walking",
 "speed": 5.0
 }, {
-"frames": [  ],
+"frames": [ ExtResource( 6 ) ],
 "loop": true,
-"name": "death",
+"name": "attack",
 "speed": 5.0
 } ]
 
@@ -49,7 +55,8 @@ position = Vector2( 13.9618, 8.57865 )
 rotation = 1.5708
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 3 )
-animation = "idle"
+animation = "attack"
+playing = true
 
 [node name="attack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
