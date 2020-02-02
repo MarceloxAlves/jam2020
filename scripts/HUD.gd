@@ -10,13 +10,13 @@ func _ready():
 
 func _process(delta):
 
-	$HBoxContainer/VBoxContainer/HP2/PlayerSword.value =player.sword_life
-	$HBoxContainer/time.text =  str(round($Timer.time_left))
-	$HBoxContainer/HBoxContainer/metal.text =  str(round(player.quant_item))
+	$PC/HBoxContainer/VBoxContainer/HP2/PlayerSword.value =player.sword_life
+	$PC/HBoxContainer/time.text =  str(round($Timer.time_left))
+	$PC/HBoxContainer/HBoxContainer/metal.text =  str(round(player.quant_item))
 
 	
 	if (round($Timer.time_left) == 10):
-		$HBoxContainer/time.add_color_override("font_color", Color(1,0.8,0.8,1))
+		$PC/HBoxContainer/time.add_color_override("font_color", Color(1,0.8,0.8,1))
 	
 
 func _on_Timer_ready():
@@ -24,6 +24,6 @@ func _on_Timer_ready():
 
 
 func _on_Timer_timeout():
-	$HBoxContainer/time.add_color_override("font_color", Color(1,1,1,1))
+	$PC/HBoxContainer/time.add_color_override("font_color", Color(1,1,1,1))
 	self.get_parent().horda_add()
 	timer.wait_time += 5

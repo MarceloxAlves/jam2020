@@ -1,15 +1,27 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Facao.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/World.gd" type="Script" id=4]
+[ext_resource path="res://assets/mapa.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2171.68, 10 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -3.36035
+margin_top = -47.84
+margin_right = 1942.64
+margin_bottom = 1507.16
+texture = ExtResource( 5 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 489.581, 697.341 )
@@ -24,3 +36,5 @@ position = Vector2( 227.056, 298.536 )
 shape = SubResource( 1 )
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
+margin_left = 3.0
+margin_right = 1929.0

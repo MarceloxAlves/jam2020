@@ -48,6 +48,7 @@ rotation = 1.5708
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 2 )
 animation = "walking"
+frame = 1
 speed_scale = 0.5
 playing = true
 
