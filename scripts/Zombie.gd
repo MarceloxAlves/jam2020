@@ -84,7 +84,7 @@ func _on_ZombieArea2D_body_entered(body):
 			body.x_destiny = 50
 		else:
 			body.x_destiny = -50
-			
+		$attack.play()	
 		body.hitado = true
 		body.take_hit(attack, player.global_position - global_position)
 		

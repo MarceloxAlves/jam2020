@@ -69,6 +69,7 @@ func _physics_process(delta):
 		
 	
 func attack_enemy(body, damage):
+	$attack.play()
 	if (sword_life > 0):
 		var f = body.take_damage(damage)
 		sword_life -= body.sword_damage
@@ -85,6 +86,7 @@ func sword_repair(_body):
 		
 func take_hit(damage, velocity):
 	hitado = true
+	
 	velocity_hit = velocity
 	if (hp - damage <= 0):
 		hp = 0
