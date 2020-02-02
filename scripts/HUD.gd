@@ -11,6 +11,7 @@ func _ready():
 func _process(_delta):
 
 	$PC/HBoxContainer/VBoxContainer/HP2/PlayerSword.value =player.sword_life
+	$PC/HBoxContainer/VBoxContainer/HP/HBoxContainer/life.value =  player.hp
 	$PC/HBoxContainer/time.text =  str(round($Timer.time_left))
 	$PC/HBoxContainer/HBoxContainer/metal.text =  str(round(player.quant_item))
 

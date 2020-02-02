@@ -63,5 +63,3 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZombieArea2D"]
 shape = SubResource( 3 )
-[connection signal="body_entered" from="ZombieArea2D" to="." method="_on_ZombieArea2D_body_entered"]
-[connection signal="body_exited" from="ZombieArea2D" to="." method="_on_ZombieArea2D_body_exited"]

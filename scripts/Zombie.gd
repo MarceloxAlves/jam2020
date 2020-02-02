@@ -68,6 +68,7 @@ func hordaUp():
 
 
 func _on_ZombieArea2D_body_entered(body):
+	print(body.name)
 	if body.name == "Player":
 		if(self.position.x < body.position.x):
 			body.x_destiny = 50
