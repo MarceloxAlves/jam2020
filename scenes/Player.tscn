@@ -21,6 +21,11 @@ animations = [ {
 "loop": true,
 "name": "walking",
 "speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "death",
+"speed": 5.0
 } ]
 
 [node name="Player" type="KinematicBody2D"]
@@ -42,4 +47,4 @@ position = Vector2( 13.9618, 8.57865 )
 rotation = 1.5708
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 3 )
-animation = "idle"
+animation = "death"

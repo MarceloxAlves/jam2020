@@ -58,8 +58,6 @@ func repeate_me_enemy():
 	
 	if (quant_enemy < quant_max_spawn_enemy - spawning_frequency_enemy):
 		spawn_enemy()
-	elif(enemy_remaing == 0):
-		horda_add()
 		
 	create_timer_enemy()
 	
@@ -76,10 +74,10 @@ func spawn_enemy():
 		var y
 		spawn.set_player($Player)
 		if (i >= spawning_frequency_enemy / 2):
-			x = 0
+			x = 30
 			y = rand.randf_range(SPAWN_LIMIX_Y + 30, screen_size.y - 30)
 		else:
-			x = screen_size.x - 30
+			x = screen_size.x - 50
 			y = rand.randf_range(SPAWN_LIMIX_Y + 30, screen_size.y - 30)
 		
 		spawn.position.x = x

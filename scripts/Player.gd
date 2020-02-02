@@ -69,13 +69,14 @@ func _physics_process(delta):
 		
 	
 func attack_enemy(body, damage):
-	var f = body.take_damage(damage)
-	sword_life -= body.sword_damage
-	
-	if (body.is_dead()):
-		print("Matou o inimigo")
+	if (sword_life > 0):
+		var f = body.take_damage(damage)
+		sword_life -= body.sword_damage
 		
-	f.resume()
+		if (body.is_dead()):
+			print("Matou o inimigo")
+			
+		f.resume()
 	
 func sword_repair(_body):
 	if (quant_item > 0 and sword_life != 100):

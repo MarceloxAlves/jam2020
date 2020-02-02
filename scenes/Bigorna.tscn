@@ -9,6 +9,7 @@ height = 113.934
 [node name="Bigorna" type="Node2D"]
 
 [node name="Bigorna2D" type="StaticBody2D" parent="."]
+z_index = 1
 
 [node name="Sprite" type="Sprite" parent="Bigorna2D"]
 scale = Vector2( 3, 3 )
