@@ -13,7 +13,7 @@ extents = Vector2( 2171.68, 10 )
 script = ExtResource( 4 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 489.581, 697.341 )
+position = Vector2( 454.336, 503.491 )
 
 [node name="Facao" parent="." instance=ExtResource( 3 )]
 position = Vector2( 886.221, 840.713 )

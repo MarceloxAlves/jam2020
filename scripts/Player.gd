@@ -5,6 +5,11 @@ var quant_item = 0
 var attack = 10
 var sword_life = 100
 var break_coefficient = 0.3
+var hp = 100
+var take_hit = false
+var velocity_hit = 0
+
+var x_destiny = 50
 
 var machete
 onready var sword_area = $SwordArea
@@ -41,6 +46,14 @@ func _physics_process(delta):
 		if (body.name == "Bigorna2D"):
 			sword_repair(body)
 
+	#if (collision):
+		#print("colidiu")
+			
+	if (take_hit):
+		print(hp)
+		self.position.x += x_destiny
+		
+	
 func attack_enemy(body, attack):
 	var f = body.take_damage(attack)
 	sword_life -= body.sword_damage
@@ -54,6 +67,19 @@ func sword_repair(body):
 	if (quant_item > 0):
 		quant_item -= 1
 		sword_life += 10
+		
+func take_hit(damage, velocity):
+	take_hit = true
+	velocity_hit = velocity
+	if (hp - damage <= 0):
+		hp = 0
+		kill()
+
+	hp -= damage
+
+
+func is_dead():
+	return hp == 0
 
 func kill():
 	get_tree().reload_current_scene()
