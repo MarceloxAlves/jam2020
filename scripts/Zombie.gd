@@ -10,6 +10,7 @@ var velocity = Vector2()
 onready var raycast = $RayCast2D
 onready var sensorSpider =  $SpiderSensor
 onready var area = $ZombieArea2D
+onready var damage_counter = preload("res://scenes/DamageCounter.tscn")
 
 var x_derection = 50
 
@@ -71,6 +72,9 @@ func take_damage(damage):
 	self.position.x += x_derection
 
 	hp -= damage
+	var damage_counter_instance = damage_counter.instance()
+	damage_counter_instance.damage = damage
+	add_child(damage_counter_instance)
 	yield()
 	return
 	
