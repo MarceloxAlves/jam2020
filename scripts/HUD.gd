@@ -8,7 +8,7 @@ func _ready():
 	timer.wait_time += 5
 
 
-func _process(delta):
+func _process(_delta):
 
 	$PC/HBoxContainer/VBoxContainer/HP2/PlayerSword.value =player.sword_life
 	$PC/HBoxContainer/time.text =  str(round($Timer.time_left))
