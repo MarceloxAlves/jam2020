@@ -7,13 +7,15 @@ var quant_max_spawn = 20
 var spawning_time = 3
 var spawning_frequency = 2
 var quant_item = 0
+var enemy_remaing = 0
 
 #var quant_max_spawn_enemy = 6
-var quant_max_spawn_enemy = 20
+var quant_max_spawn_enemy = 10
 var spawning_time_enemy = 3
 var spawning_frequency_enemy = 3
 var quant_enemy = 0
 var hp = 0
+var horda = 1
 
 
 func _ready():
@@ -50,9 +52,19 @@ func create_timer():
 	timer.start()
 	
 	
+func horda_add():
+	horda += 1
+	quant_max_spawn_enemy += quant_enemy
+	get_tree().call_group("enemies", "hordaUp")
+	
+
 func repeate_me_enemy():
+	
 	if (quant_enemy < quant_max_spawn_enemy - spawning_frequency_enemy):
 		spawn_enemy()
+	elif(enemy_remaing == 0):
+		horda_add()
+		
 		
 	create_timer_enemy()
 	
@@ -63,12 +75,12 @@ func spawn_enemy():
 	var screen_size = get_viewport().get_visible_rect().size
 	var enemy = load("res://scenes/Zombie.tscn")
 
-	for i in range(0, spawning_frequency):
+	for i in range(0, spawning_frequency_enemy):
 		var spawn = enemy.instance()	
 		var x
 		var y
 		spawn.set_player($Player)
-		if (i >= spawning_frequency / 2):
+		if (i >= spawning_frequency_enemy / 2):
 			x = 0
 			y = rand.randf_range(SPAWN_LIMIX_Y + 30, screen_size.y - 30)
 		else:
@@ -78,12 +90,10 @@ func spawn_enemy():
 		spawn.position.x = x
 		spawn.position.y = y
 		quant_enemy += 1
+		enemy_remaing += 1
 		
 		add_child(spawn)
 		
-	#spawning_frequency += 1
-	#quant_max_spawn += 1
-	#spawning_time += 3
 	
 func repeat_me():
 	if (quant_item < quant_max_spawn - spawning_frequency):

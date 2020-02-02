@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const MOVE_SPEED = 100
+var MOVE_SPEED = 100
 
 var sword_damage = 10
 var hp = 100
@@ -47,6 +47,7 @@ func _physics_process(delta):
 						
 
 func kill():
+	self.get_parent().enemy_remaing -= 1
 	queue_free()
 
 func is_dead():
@@ -67,3 +68,7 @@ func set_player(p):
 	player = p
 
 #func is_dead = hp
+
+func hordaUp():
+	hp += 50
+	MOVE_SPEED += 25
