@@ -11,6 +11,7 @@ func _ready():
 
 
 func _on_TextureButton_pressed():
+	$AudioStreamPlayer.play()
 	$Timer.start()
 
 

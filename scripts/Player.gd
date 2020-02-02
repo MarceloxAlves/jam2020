@@ -14,6 +14,7 @@ var x_destiny = 50
 var machete
 onready var sword_area = $SwordArea
 onready var world = get_tree().get_root().get_node("World")
+var hit = load("res://scenes/Hit.tscn")
 
 func _ready():
 	get_tree().call_group("enemies", "set_player", self)
@@ -75,6 +76,7 @@ func _physics_process(delta):
 		
 	
 func attack_enemy(body, damage):
+	$attack.play()
 	if (sword_life > 0):
 		var f = body.take_damage(damage)
 		sword_life -= body.sword_damage
@@ -92,6 +94,11 @@ func sword_repair(_body):
 		
 func take_hit(damage, velocity):
 	hitado = true
+	var hitI = hit.instance()
+	hitI.position = Vector2(self.position.x, self.position.y - 50)	
+	hitI.damage = damage
+	add_child(hitI)
+	hitI.animate()
 	velocity_hit = velocity
 	if (hp - damage <= 0):
 		hp = 0
@@ -108,6 +115,7 @@ func kill():
 
 func pick_up_item():
 	quant_item += 1
+	$collect.play()
 	world.remove_item()
 
 func equip():
